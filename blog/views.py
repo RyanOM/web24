@@ -47,3 +47,6 @@ def posts_by_tag(request, slug=""):
 		'slug': slug,
 		'tags': Tag.objects.all(),
 	})
+
+def HomeView(request):
+	return render(request, 'index.html')
