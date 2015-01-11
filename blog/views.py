@@ -23,7 +23,7 @@ def post_list(request):
 	posts = Post.objects.filter(published_date__isnull=False).order_by('-published_date')
 	#return render(request, 'blog/post_list.html', {'posts': posts})
 	paginated = _paginate_posts(request, posts)
-	return render(request, 'blog/post_list.html', {
+	return render(request, 'post_list.html', {
 		'posts': paginated,
 		'tags': Tag.objects.all(),
 	})
