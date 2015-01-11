@@ -6,6 +6,7 @@ class Post(models.Model):
 	author = models.ForeignKey('auth.User')
 	title = models.CharField(max_length=200)
 	text = models.TextField()
+	image_url = models.CharField(max_length=200, blank=True)
 	slug = models.SlugField(max_length=200, unique=True)
 	tags = TaggableManager()
 	created_date = models.DateTimeField(default=timezone.now)

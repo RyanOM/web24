@@ -32,9 +32,10 @@ def post_detail(request, slug=""):
 	try:
 		post = Post.objects.get(slug=slug.lower())
 	except Post.DoesNotExist:
-		return render(request, 'blog/base.html')
-	return render(request, 'blog/post_detail.html', {
+		return render(request, 'base.html')
+	return render(request, 'post_detail.html', {
 		'post': post,
+		'tags': Tag.objects.all(),
 	})
 
 def posts_by_tag(request, slug=""):
@@ -42,7 +43,7 @@ def posts_by_tag(request, slug=""):
 	#if posts.count() == 0:
 	#	raise Exception("whatever")
 	paginated = _paginate_posts(request, posts)
-	return render(request, 'blog/post_list.html', {
+	return render(request, 'post_list.html', {
 		'posts': paginated,
 		'slug': slug,
 		'tags': Tag.objects.all(),
